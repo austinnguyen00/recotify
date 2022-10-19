@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-import spotifyLogo from './Spotify_Icon_RGB_White.png';
+import spotifyLogo from '../../assets/images/Spotify_Icon_RGB_White.png';
 
 const Home = () => {
   // const { auth, setAuth } = useAuth();

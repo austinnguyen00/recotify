@@ -91,7 +91,7 @@ export const PlayAudio = (track) => {
   useEffect(() => {
     return () => {
       audio.current.pause();
-      // console.log('in cleanup');
+      console.log('in cleanup', audio.current);
     };
   }, []);
 

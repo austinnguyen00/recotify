@@ -19,20 +19,19 @@ const TrackRecommendations = () => {
 
   const navigate = useNavigate();
 
-  const getTopTracks = async () => {
-    try {
-      const response = await fetch(
-        `/spotify/track-recommendations/VN/${artist}/${tracks}/${genre}`
-      );
-      const data = await response.json();
-      setRecommendTracks(Object.values(data));
-    } catch (error) {
-      // console.log('Cannot fetch recommendations');
-      navigate('/');
-    }
-  };
-
   useEffect(() => {
+    const getTopTracks = async () => {
+      try {
+        const response = await fetch(
+          `/spotify/track-recommendations/VN/${artist}/${tracks}/${genre}`
+        );
+        const data = await response.json();
+        setRecommendTracks(Object.values(data));
+      } catch (error) {
+        // console.log('Cannot fetch recommendations');
+        navigate('/');
+      }
+    };
     getTopTracks();
     // console.log('Recommended Tracks:', recommendTracks);
   }, []);
@@ -52,7 +51,7 @@ const TrackRecommendations = () => {
         <div className='recommendation-button-wrapper'>
           <Button
             variant='contained'
-            onClick={() => window.location.reload(false)}
+            onClick={() => window.location.reload()}
             // onClick={() => {
             // getTopTracks();
             // }}

@@ -110,7 +110,8 @@ def spotify_callback(request, format=None):
   except:
     return Response({'Fail to authorize access from user'}, status=status.HTTP_400_BAD_REQUEST)
   
-  response = redirect(f'{FRONTEND_BASE_URL}/get-started')
+  # response = redirect(f'{FRONTEND_BASE_URL}/get-started')
+  response = redirect(f'/#/get-started')
   return response
 
 

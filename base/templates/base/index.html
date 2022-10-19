@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Home Template</h1>
+<div class="main-container">
+  <button onClick="Test()">Get Go</button>
+  <button onClick="authenticateSpotify()">Get Authenticated</button>
+  
+  <button onClick="getCurrentSong()">Get Current Song</button>
+  <button onClick="componentDidMount()">Get Song Interval</button>
+  <button onClick="componentDidUnmount()">Stop Song Interval</button>
+
+  <div id="song"></div>
+</div>
+
+<div class="music_player">
+
+</div>
+
+
+{% endblock content %}

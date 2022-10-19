@@ -1,0 +1,59 @@
+/* :root{
+	--main-color:#020202;
+	--secondary-color:#15283a;
+
+	--border-color:#164D56;
+	--header-border-color: #6ca369;
+
+	--main-text:#fff;
+	--secondary-text:#eeeeee;
+
+	--theme-dot-border:#FFF;
+
+	--preview-bg:rgb(25, 39, 52, 0.8);
+  --resume-hover: #2c4c6a;
+
+	--button-color:#196ad4bb;
+  --link-color: rgb(25, 118, 210);
+}
+
+html, body{
+	padding: 0;
+  margin: 0;
+  background-color:var(--main-color)!important;
+  line-height: 1.75;
+  height: 100%;
+}
+
+body {
+  max-width: max-content;
+  margin: auto;
+  }
+
+html, body *{
+  transition: 0.25s;
+}
+
+h1, h2, h3, h4, h5, h6, strong {
+  color: var(--main-text);
+  font-family: 'League Spartan', sans-serif;
+}
+
+p, li, span, label, input, text, a, textarea {
+  color: var(--main-text);
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+}
+
+.main-container{
+  height: 40%;
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(10px, 200px));
+  gap: 20px;
+  justify-content: center;
+  }
+
+/* .main-container button{
+  height: 50px;
+  width: 200px;
+} */

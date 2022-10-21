@@ -12,6 +12,7 @@ import Sidebar from '../../components/Sidebar';
 const TopTracks = () => {
   const params = useParams();
   const artist_id = params['artist_id']; // extract the artist id from the params
+  const country = sessionStorage.getItem('country_code');
 
   sessionStorage.setItem('page', 4); // set the page number
 
@@ -30,7 +31,9 @@ const TopTracks = () => {
   useEffect(() => {
     const getTopTracks = async () => {
       try {
-        const response = await fetch(`/spotify/top-tracks/VN/${artist_id}`);
+        const response = await fetch(
+          `/spotify/top-tracks/${country}/${artist_id}`
+        );
         const data = await response.json();
         setTopTracks(Object.values(data));
       } catch (e) {

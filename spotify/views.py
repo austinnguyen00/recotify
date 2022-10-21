@@ -106,13 +106,14 @@ def spotify_callback(request, format=None):
 
     session_id = request.session.session_key
     util.update_or_create_user_token(session_id, access_token, token_type, expires_in, refresh_token)
-  
+    response = redirect(f'/#/get-started')
+    return response
+    
   except:
     return Response({'Fail to authorize access from user'}, status=status.HTTP_400_BAD_REQUEST)
   
   # response = redirect(f'{FRONTEND_BASE_URL}/get-started')
-  response = redirect(f'/#/get-started')
-  return response
+
 
 
 @api_view(['GET'])
@@ -265,18 +266,21 @@ def get_artists_by_genre(request, genre, market):
   response = util.execute_spotify_api_request(session_id, endpoint=endpoint, params=params)
 
   # Create new dictionary of artists to be returned
-  items = response['artists']['items']
-  artists = {}
-  for i, item in enumerate(items):
-    key = f'artist_{i+1}'
-    artists[key] = {}
-    artists[key]['name'] = item['name']
-    artists[key]['id'] = item['id']
-    artists[key]['genres'] = item['genres']
-    artists[key]['image'] = item['images'][0].get('url')
-    artists[key]['followers'] = item['followers']['total']
+  try:
+    items = response['artists']['items']
+    artists = {}
+    for i, item in enumerate(items):
+      key = f'artist_{i+1}'
+      artists[key] = {}
+      artists[key]['name'] = item['name']
+      artists[key]['id'] = item['id']
+      artists[key]['genres'] = item['genres']
+      artists[key]['image'] = item['images'][0].get('url')
+      artists[key]['followers'] = item['followers']['total']
 
-  return Response(artists)
+    return Response(artists)
+  except:
+    return Response(response)
 
 
 @api_view(['GET'])
@@ -290,28 +294,32 @@ def get_top_tracks_by_artist(request, artist_id, market):
   response = util.execute_spotify_api_request(session_id, endpoint=endpoint, params=params)
 
   top_tracks = {}
-  tracks = response['tracks']  # five tracks total
-  for i, track in enumerate(tracks):
-    key = f'track_{i+1}'
-    top_tracks[key] = {}
-    top_tracks[key]['name'] = track['name']
-    top_tracks[key]['track_id'] = track['id']
 
-    artists = []  
-    # Get all artists of the track
-    for artist in track['artists']:
-      artists.append({
-        'name': artist['name'],
-        'artist_id': artist['id'],
-      })
+  try:
+    tracks = response['tracks']  # five tracks total
+    for i, track in enumerate(tracks):
+      key = f'track_{i+1}'
+      top_tracks[key] = {}
+      top_tracks[key]['name'] = track['name']
+      top_tracks[key]['track_id'] = track['id']
 
-    top_tracks[key]['artists'] = artists
-    top_tracks[key]['image'] = track['album']['images'][0].get('url')
-    top_tracks[key]['preview_url'] = track['preview_url']
-    top_tracks[key]['track_url'] = track['external_urls']['spotify']
-    top_tracks[key]['popularity'] = track['popularity']
-    
-  return Response(top_tracks)
+      artists = []  
+      # Get all artists of the track
+      for artist in track['artists']:
+        artists.append({
+          'name': artist['name'],
+          'artist_id': artist['id'],
+        })
+
+      top_tracks[key]['artists'] = artists
+      top_tracks[key]['image'] = track['album']['images'][0].get('url')
+      top_tracks[key]['preview_url'] = track['preview_url']
+      top_tracks[key]['track_url'] = track['external_urls']['spotify']
+      top_tracks[key]['popularity'] = track['popularity']
+      
+    return Response(top_tracks)
+  except:
+    return Response({'Error': 'Issue with request'})
 
 
 @api_view(['GET'])

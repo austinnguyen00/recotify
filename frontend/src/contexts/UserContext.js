@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState } from 'react';
 
-const UserContext = createContext({ theme: 'light' });
+const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const title = {
@@ -11,12 +11,13 @@ export const UserProvider = ({ children }) => {
     4: 'Recommendations',
   };
 
-  const [data, setData] = useState({
+  const data = {
     emotion: '',
     genre: '',
     artist: '',
     tracks: '',
-  });
+    countryCode: '',
+  };
 
   const [page, setPage] = useState(1);
 
@@ -39,11 +40,6 @@ export const UserProvider = ({ children }) => {
 
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const [playingAudio, setPlayingAudio] = useState({
-    playing: null,
-    toggle: null,
-  });
-
   return (
     <UserContext.Provider
       value={{
@@ -51,7 +47,7 @@ export const UserProvider = ({ children }) => {
         page,
         setPage,
         data,
-        setData,
+        // setData,
         key,
         trackPlaying,
         setTrackPlaying,

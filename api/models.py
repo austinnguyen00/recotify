@@ -24,4 +24,23 @@ class Emotion(models.Model):
     return self.name
 
 
+class User(models.Model):
+  user = models.CharField(max_length=255, primary_key=True)
+  mood = models.CharField(max_length=50)
+  genre = models.CharField(max_length=50)
+  artist = models.CharField(max_length=255) # artist id 
   
+  def __str__(self):
+    return self.user
+
+
+
+class Track(models.Model):
+  '''
+  One User can select two Track objects
+  '''
+  track = models.CharField(max_length=255)  # track id
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.track

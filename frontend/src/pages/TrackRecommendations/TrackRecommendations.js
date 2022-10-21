@@ -11,6 +11,7 @@ import RecommendTrack from './RecommendTrack';
 const TrackRecommendations = () => {
   sessionStorage.setItem('page', 5);
 
+  let country = sessionStorage.getItem('country_code');
   let genre = sessionStorage.getItem('genre');
   let artist = sessionStorage.getItem('artist');
   let tracks = sessionStorage.getItem('tracks');
@@ -23,7 +24,7 @@ const TrackRecommendations = () => {
     const getTopTracks = async () => {
       try {
         const response = await fetch(
-          `/spotify/track-recommendations/VN/${artist}/${tracks}/${genre}`
+          `/spotify/track-recommendations/${country}/${artist}/${tracks}/${genre}`
         );
         const data = await response.json();
         setRecommendTracks(Object.values(data));

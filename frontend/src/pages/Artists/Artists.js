@@ -16,6 +16,7 @@ const Artists = () => {
   // Extract the genre parameter
   const param = useParams();
   const genre = param.genre;
+  const country = sessionStorage.getItem('country_code');
 
   sessionStorage.setItem('page', 3);
 
@@ -25,7 +26,9 @@ const Artists = () => {
   useEffect(() => {
     const getArtists = async () => {
       try {
-        const response = await fetch(`/spotify/artists-by-genre/VN/${genre}`); // fetch artists of this genre
+        const response = await fetch(
+          `/spotify/artists-by-genre/${country}/${genre}`
+        ); // fetch artists of this genre
         const data = await response.json();
         // console.log('Data:', data);
         setArtists(Object.values(data)); // convert dictionary to array of objects

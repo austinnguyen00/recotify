@@ -6,7 +6,7 @@ import SidebarTrack from './SidebarTrack';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 
 const Sidebar = () => {
-  const { key, page, title, setPage } = useUserContext();
+  const { key, page, title, setPage, data } = useUserContext();
 
   useEffect(() => {
     setPage(sessionStorage.getItem('page'));
@@ -77,6 +77,8 @@ const Sidebar = () => {
     const activePage = allItems[page - 1];
     activePage.classList.add('active');
   };
+
+  console.log('data:', data);
 
   return (
     <>

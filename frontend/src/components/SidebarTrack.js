@@ -78,7 +78,7 @@ const SidebarTrack = () => {
         <div className='sidebar-track-wrapper'>
           <a
             className='sidebar-track-link'
-            href={track.preview_url}
+            href={track.track_url}
             target='_blank'
             rel='noreferrer'
           >

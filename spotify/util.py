@@ -106,8 +106,12 @@ def execute_spotify_api_request(session_id, endpoint, params='', post=False, put
   '''
   token = get_user_token(session_id)
   # print("Access Token: %s" % token.access_token)
-  headers = {'Content-Type': 'application/json',
-            'Authorization': "Bearer " + token.access_token}
+  headers = {
+    "Accept": "application/json",
+    'Content-Type': 'application/json',
+    'Authorization': "Bearer " + token.access_token
+  }
+  print("Access token: %s" % token.access_token)
 
   if post:
     requests.post(url=BASE_URL + endpoint, headers=headers, params=params)
@@ -116,6 +120,7 @@ def execute_spotify_api_request(session_id, endpoint, params='', post=False, put
 
   # GET request
   response = requests.get(url=BASE_URL + endpoint, headers=headers, params=params)
+  print("Response Status:", response.headers)
   try:
     return response.json()
   except:

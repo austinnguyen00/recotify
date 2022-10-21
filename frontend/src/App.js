@@ -4,6 +4,7 @@ import './assets/global.css';
 
 import Home from './pages/Home/Home';
 import GetStarted from './pages/GetStarted/GetStarted';
+import Moods from './pages/Moods/Moods';
 import Genres from './pages/Genres/Genres';
 import Artists from './pages/Artists/Artists';
 import TopTracks from './pages/TopTracks/TopTracks';
@@ -37,6 +38,7 @@ function App() {
             {/* <Route element={<PrivateRoutes />}> */}
             {/* <Route element={<RequireAuth />}> */}
             <Route path='/get-started' element={<GetStarted />} />
+            <Route path='/moods' element={<Moods />} />
             <Route path='/genres/:emotion' element={<Genres />} />
             <Route path='/artists/:genre' element={<Artists />} />
             <Route

@@ -3,8 +3,6 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 import useUserContext from '../hooks/useUserContext';
 import SidebarTrack from './SidebarTrack';
 
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
-
 const Sidebar = () => {
   const { key, page, title, setPage, data } = useUserContext();
 
@@ -74,11 +72,11 @@ const Sidebar = () => {
       allItems[i].classList.remove('active');
     }
     // Add active class to current page
-    const activePage = allItems[page - 1];
+    const activePage = allItems[page];
     activePage.classList.add('active');
   };
 
-  console.log('data:', data);
+  // console.log('data:', data);
 
   return (
     <>

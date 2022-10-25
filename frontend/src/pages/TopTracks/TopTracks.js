@@ -36,6 +36,9 @@ const TopTracks = () => {
         );
         const data = await response.json();
         setTopTracks(Object.values(data));
+        if (response.status === 400) {
+          navigate('/error');
+        }
       } catch (e) {
         navigate('/');
       }

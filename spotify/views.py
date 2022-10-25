@@ -56,7 +56,8 @@ class AuthURL(APIView):
   APIView class return request authorization url
   '''
   def get(self, request, format=None):
-    scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing'
+    # scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing'
+    scopes = ''
 
     url = requests.Request('GET', 'https://accounts.spotify.com/authorize', params={
       'scope': scopes,
@@ -106,7 +107,7 @@ def spotify_callback(request, format=None):
 
     session_id = request.session.session_key
     util.update_or_create_user_token(session_id, access_token, token_type, expires_in, refresh_token)
-    response = redirect(f'/#/get-started')
+    response = redirect(f'/#/country')
     return response
     
   except:
@@ -280,7 +281,7 @@ def get_artists_by_genre(request, genre, market):
 
     return Response(artists)
   except:
-    return Response(response)
+    return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
@@ -319,7 +320,7 @@ def get_top_tracks_by_artist(request, artist_id, market):
       
     return Response(top_tracks)
   except:
-    return Response({'Error': 'Issue with request'})
+    return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])

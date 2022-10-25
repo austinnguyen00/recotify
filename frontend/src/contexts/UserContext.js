@@ -4,29 +4,31 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const title = {
-    0: 'Moods',
-    1: 'Genres',
-    2: 'Artists',
-    3: 'Tracks',
-    4: 'Recommendations',
+    0: 'Country',
+    1: 'Moods',
+    2: 'Genres',
+    3: 'Artists',
+    4: 'Tracks',
+    5: 'Recommendations',
   };
 
-  const data = {
+  const [data, setData] = useState({
     emotion: '',
     genre: '',
     artist: '',
     tracks: '',
-    countryCode: '',
-  };
+    country: '',
+  });
 
   const [page, setPage] = useState(1);
 
   const key = {
-    0: 'emotion',
-    1: 'genre',
-    2: 'artist_name',
-    3: 'tracks_name',
-    4: 'recommendation',
+    0: 'country_name',
+    1: 'emotion',
+    2: 'genre',
+    3: 'artist_name',
+    4: 'tracks_name',
+    5: 'recommendation',
   };
 
   const [trackPlaying, setTrackPlaying] = useState({
@@ -47,7 +49,7 @@ export const UserProvider = ({ children }) => {
         page,
         setPage,
         data,
-        // setData,
+        setData,
         key,
         trackPlaying,
         setTrackPlaying,

@@ -1,5 +1,6 @@
 import { Checkbox } from '@mui/material';
 import { useEffect } from 'react';
+import ReactTooltip from 'react-tooltip';
 
 const TrackCheckBox = ({
   track,
@@ -30,12 +31,15 @@ const TrackCheckBox = ({
   return (
     <div className={[selected ? 'track-checkbox-active' : 'track-checkbox']}>
       <Checkbox
-        onClick={() => {
+        onChange={() => {
           toggle();
         }}
         sx={{ fontSize: 24 }}
-      />
-      {/* <span>{selected ? <p>Yes</p> : <p>No</p>}</span> */}
+        data-tip='Select Track'
+        data-place='top'
+      >
+        <ReactTooltip delayShow={800} />
+      </Checkbox>
     </div>
   );
 };

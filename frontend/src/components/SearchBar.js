@@ -26,7 +26,8 @@ const SearchBar = ({ placeholder, data }) => {
   };
 
   const handleClick = (e) => {
-    const clickedWord = e.target.getElementsByTagName('p')[0].innerHTML;
+    const clickedWord = e.target.innerHTML;
+    // console.log('click word:', clickedWord);
 
     // Get the country code from country name
     const country = data.filter((value) => {
@@ -64,7 +65,7 @@ const SearchBar = ({ placeholder, data }) => {
           {filteredData.slice(0, 10).map((value, key) => {
             return (
               <div className='data-item' onClick={handleClick}>
-                <p>{value.name}</p>
+                {value.name}
               </div>
             );
           })}

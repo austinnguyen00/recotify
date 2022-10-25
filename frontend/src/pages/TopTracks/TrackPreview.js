@@ -8,6 +8,7 @@ import TrackCover from '../../components/TrackCover';
 import TrackLink from '../../components/TrackLink';
 import TrackCheckBox from './TrackCheckBox';
 import TrackInfo from '../../components/TrackInfo';
+import ReactTooltip from 'react-tooltip';
 
 const TrackPreview = ({ track, selectedTracks, setSelectedTracks }) => {
   const artists = Object.values(track.artists);

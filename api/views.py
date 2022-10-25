@@ -27,7 +27,7 @@ def get_emotion(request, pk):
 def get_genres(request):
   genres = Genre.objects.all()  # query all emotion objects - python format
   serializer = EmotionSerializer(genres, many=True)  # serializer object
-  print("Serializer: {}".format(serializer))
+  # print("Serializer: {}".format(serializer))
   return Response(serializer.data)
 
 

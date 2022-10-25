@@ -19,10 +19,11 @@ const Emotion = ({ emotion_name, emotion_icon }) => {
 
   return (
     <div
-      className={[
-        'emotion-wrapper',
-        !visited ? 'emotion-first-visited' : null,
-      ].join(' ')}
+      // className={[
+      //   'emotion-wrapper',
+      //   !visited ? 'emotion-first-visited' : null,
+      // ].join(' ')}
+      className='emotion-wrapper'
     >
       <Link
         to={`/genres/${emotion_name.toLowerCase()}`} // Location of redirect

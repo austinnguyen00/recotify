@@ -32,7 +32,12 @@ const Artists = () => {
         const data = await response.json();
         // console.log('Data:', data);
         setArtists(Object.values(data)); // convert dictionary to array of objects
+        // console.log(response.status);
+        if (response.status === 400) {
+          navigate('/error');
+        }
       } catch (e) {
+        console.log(e);
         navigate('/');
       }
     };

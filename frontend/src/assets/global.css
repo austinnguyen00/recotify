@@ -64,10 +64,10 @@ p, span, a, li{
 
 .body-container{
   display: flex;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
-  padding-top: 30px;
-  height: 80vh;
+  margin-top: 100px;
   width: 100%;
 }
 
@@ -94,7 +94,7 @@ p, span, a, li{
 }
 
 .homepage-title {
-  font-size: 36px;
+  font-size: 38px;
 }
 
 .homepage-info{
@@ -102,6 +102,10 @@ p, span, a, li{
   justify-content: center;
   align-items: center;
   height: 60px;
+}
+
+.homepage-info p{
+  font-size: 16px;
 }
 
 .homepage-logo{
@@ -148,7 +152,7 @@ p, span, a, li{
 
 .searchbar-input input {
   display: block;
-  background-color: var(--searchbar-color);
+  background-color: var(--searchbar-color) !important;
   width: 95%;
   border: 0 var(--searchbar-color);
   font-size: 18px;
@@ -158,6 +162,7 @@ p, span, a, li{
 
 .searchbar-input input:focus {
   outline: none;
+  background-color: var(--searchbar-color) !important;
 }
 
 .searchbar-icon {
@@ -195,6 +200,7 @@ p, span, a, li{
   height: 50px;
   padding-left: 15px;
   text-decoration: none;
+  z-index: 1;
 }
 
 .data-item:hover {
@@ -210,6 +216,7 @@ p, span, a, li{
   justify-content: center;
   align-items: center;
   height: 80px;
+  margin-top: 30px;
 }
 
 .button-wrapper button{
@@ -311,7 +318,7 @@ p, span, a, li{
   position: relative;
   text-align: left;
   text-decoration: none;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   padding-left: 15px;
 }
 
@@ -431,12 +438,13 @@ p, span, a, li{
   display: grid;
   margin: 0 auto;
   width: 90%;
-  height: 100%;
   grid-template-columns: repeat( auto-fit, 200px);
   gap: 50px;
   justify-content: center;
   justify-items: center;
   align-items: center;
+  align-content: center;    
+  overflow: auto;
 }
 
 @keyframes fadeIn{
@@ -471,26 +479,41 @@ p, span, a, li{
 
 /* =================================================================
 /* GENRE CARD */
-
 .genres-wrapper{
   display: grid;
-  grid-template-columns: repeat( auto-fit, 35vh);
+  grid-template-columns: repeat( auto-fit, 220px);
   /* grid-template-rows: repeat( auto-fit, 15vh); */
+  margin: 0 auto;
   width: 95%;
-  height: 100%;
   gap: 50px;
   justify-content: center;
   justify-items: center;
   align-items: center;
+  align-content: center;   
+  overflow: auto; 
+}
+
+.genres-button{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.genres-button button{
+  background-color: var(--button-color);
+  font-size: 14px;
+  border-radius: 20px;
+  padding: 10px 20px;
+  width: fit-content;
 }
 
 .genre-wrapper{
   display: flex;
   height: 80px;
-  width: 30vh;
+  width: 220px;
   justify-content: space-between;
   align-items: center;
   background-color: var(--card-color);
+
 }
 
 .genre-wrapper:hover{
@@ -498,7 +521,7 @@ p, span, a, li{
 }
 
 .genre-wrapper p{
-  font-size: 24px;
+  font-size: 22px;
   padding-left: 2vh;
 }
 
@@ -655,6 +678,8 @@ p, span, a, li{
 
 .track-button{
   height: 60px;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .track-info-wrapper{
@@ -796,13 +821,25 @@ p, span, a, li{
     border-radius: 20px;
   }
 
-  /* .body-container{
-    height: auto;
-  } */
+  .body-container{
+    margin-top: 50px;
+  }
 }
 
-
 @media screen and (max-width: 768px){
+  .homepage-title {
+    font-size: 34px;
+  }
+  
+  .homepage-info p{
+    font-size: 14px;
+  }
+  
+  .homepage-logo{
+    padding-left: 10px;
+    height: 20px;
+  }
+
   .sidebar-wrapper{
     display:none;
   }
@@ -844,6 +881,7 @@ p, span, a, li{
 }
 
 @media screen and (max-width: 480px){
+
   .sidebar-wrapper{
     display:none;
   }

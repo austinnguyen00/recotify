@@ -28,6 +28,9 @@ const TrackRecommendations = () => {
         );
         const data = await response.json();
         setRecommendTracks(Object.values(data));
+        if (response.status === 400) {
+          navigate('/error');
+        }
       } catch (error) {
         // console.log('Cannot fetch recommendations');
         navigate('/');

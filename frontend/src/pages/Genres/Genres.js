@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Genre from './Genre';
+import { Button } from '@mui/material';
 import Header from '../../components/Header';
 import ProgressBar from '../../components/ProgressBar';
 import Sidebar from '../../components/Sidebar';
@@ -10,7 +11,8 @@ const Genres = () => {
   let emotion = param.emotion;
 
   sessionStorage.setItem('page', 2);
-  let [genres, setGenres] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [showButton, setShowButton] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,15 +20,27 @@ const Genres = () => {
       try {
         const response = await fetch(`/api/emotions/${emotion}`);
         const data = await response.json();
-        // console.log(data);
         setGenres(data.recommend_genres);
       } catch (e) {
         navigate('/');
       }
     };
-
     getGenres();
   }, [emotion]);
+
+  const getGenres = async () => {
+    try {
+      const response = await fetch(`/api/genres`);
+      // console.log('response:', response);
+      const data = await response.json();
+      const genres = data.map((genre) => genre.name);
+      // console.log(genres);
+      setGenres(genres);
+      setShowButton(false);
+    } catch (e) {
+      navigate('/');
+    }
+  };
 
   return (
     <>
@@ -41,8 +55,15 @@ const Genres = () => {
             ))}
           </div>
         </div>
-
-        {/* <ProgressBar></ProgressBar> */}
+        {showButton ? (
+          <div className='genres-button'>
+            <Button onClick={getGenres} variant='contained'>
+              <p>Browse All</p>
+            </Button>
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     </>
   );
